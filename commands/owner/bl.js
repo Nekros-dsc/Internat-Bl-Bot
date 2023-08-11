@@ -79,7 +79,6 @@ module.exports = {
                 break;
             case "remove":
                 await client.users.fetch(args[1]).catch(e=> (false)) 
-                let user2 = message.mentions.members.first() || message.guild.members.cache.get(args[1])
                 if(!user2) return message.channel.send("Veuillez mentionner un **utilisateur**").then(m => m.delete({timeout: 8000}).catch(e => {}))
                 let data2 = db.get(`blacklist_${client.user.id}`)
                 if(!data2 || !data2.find(x => x.user === user2.id)) {
